@@ -1,0 +1,30 @@
+environments:
+  dev:
+    mb_metering:
+      - hostname: "node-01"
+        ip: "127.0.0.1"
+        ssh_port: 22
+        service: "nginx"
+        command_type: "systemctl"
+        command_action: "status"
+
+      - hostname: "node-02"
+        ip: "127.0.0.1"
+        ssh_port: 22
+        service: "nginx"
+        command_type: "systemctl"
+        command_action: "restart"
+    ta_metering:
+      - hostname: "node-03"
+        ip: "127.0.0.1"
+        ssh_port: 22
+        service: "nginx"
+        command_type: "systemctl"
+        command_action: "status"
+
+      - hostname: "node-04"
+        ip: "127.0.0.1"
+        ssh_port: 22
+        service: "nginx"
+        command_type: "systemctl"
+        command_action: "restart"
