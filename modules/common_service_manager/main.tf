@@ -132,7 +132,7 @@ resource "terraform_data" "common_service_manager" {
   connection {
     type        = "ssh"
     user        = var.ssh_user
-    private_key = file(var.ssh_key)
+    private_key = file(var.ssh_private_key)
     host        = each.value.ip
     port        = each.value.ssh_port
     timeout     = "2m"

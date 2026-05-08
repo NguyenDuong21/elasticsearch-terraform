@@ -5,7 +5,7 @@ provider "registry.terraform.io/carlpett/sops" {
   version     = "1.4.1"
   constraints = ">= 0.5.0"
   hashes = [
-    "h1:Bxls7vaSoHFx5oLyCC4BKWkF9A24QyYI+LDR0xwjyBo=",
+    "h1:HyIxpskyTiLdJhGFJYzCk45IsG7zMe3K+y7em3k23BE=",
     "zh:4df8dea170a4cd926ca6ef0b9fa6fd1d8c1fa9bc9e78333d544a74c24e269cf9",
     "zh:5cf661333ec5d5cce3b7c0fc399052cf8f8c50f6cb0a50f5aec2f91d83685e1e",
     "zh:680616383404bc836a2d740a0dfae4691c18c8616f346e8fa795a1d790a2d888",

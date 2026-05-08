@@ -13,7 +13,7 @@ terraform {
 # Decrypt cert / encrypted files via SOPS
 ############################################################
 
-data "sops_file" "decrypt" {
+data "sops_file" "decrypt_cert" {
   for_each = {
     for k, v in var.service_inventory :
     k => v
@@ -53,28 +53,29 @@ locals {
     ]) : idx.key => idx.val
   }
 
-  # asset_file_manager = {
-  #   for k, v in var.service_inventory :
-  #   k => merge(v, {
 
-  #     content = (
-  #       endswith(v.git_asset_path, ".tpl") ?
-  #       templatefile(v.git_asset_path, {
-  #         vm_ip   = v.ip,
-  #         vm_host = v.hostname
-  #       }) :
+  asset_file_manager = {
+    for k, v in var.service_inventory :
+    k => merge(v, {
 
-  #       can(regex("\\.(crt|key|pem|enc)$", v.git_asset_path)) ?
-  #       try(data.sops_file.decrypt_cert[k].raw, "") :
+      content = (
+        endswith(v.git_asset_path, ".tpl") ?
+        templatefile(v.git_asset_path, {
+          vm_ip   = v.ip,
+          vm_host = v.hostname
+        }) :
 
-  #       file(v.git_asset_path)
-  #     )
+        can(regex("\\.(crt|key|pem|enc)$", v.git_asset_path)) ?
+        try(data.sops_file.decrypt_cert[k].raw, "") :
 
-  #     vm_asset_path_tmp = "/tmp/atlantis/${v.vm_asset_path}"
+        file(v.git_asset_path)
+      )
 
-  #     vm_asset_path = v.cluster == "mb_fwlog" ? "/home/scpdev/opensearch/${v.vm_asset_path}" : "${var.vm_asset_dir}/${v.vm_asset_path}"
-  #   })
-  # }
+      vm_asset_path_tmp = "/tmp/atlantis/${v.vm_asset_path}"
+
+      vm_asset_path = v.cluster == "mb_fwlog" ? "/home/scpdev/opensearch/${v.vm_asset_path}" : "${var.vm_asset_dir}/${v.vm_asset_path}"
+    })
+  }
 
 }
 
@@ -125,8 +126,8 @@ locals {
 #     inline = [
 #       "sudo mkdir -p $(dirname ${each.value.vm_asset_path})",
 #       "sudo cp -f ${each.value.vm_asset_path_tmp} ${each.value.vm_asset_path}",
-#       "sudo chmod ${var.file_permission} ${each.value.vm_asset_path}",
-#       "sudo chown ${var.file_owner}:${var.file_group} ${each.value.vm_asset_path}"
+#       "sudo chmod 660 ${each.value.vm_asset_path}",
+#       # "sudo chown root:root ${each.value.vm_asset_path}"
 #     ]
 #   }
 # }
@@ -140,11 +141,3 @@ output "service_inventory" {
   value       = local.service_manager
 }
 
-output "service_clusters" {
-  description = "Assets deployed to VM"
-  value       = local.clusters
-}
-# output "asset_inventory" {
-#   description = "Assets deployed to VM"
-#   value       = local.service_manager
-# }

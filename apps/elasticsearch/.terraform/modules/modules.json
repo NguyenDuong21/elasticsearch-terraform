@@ -1,1 +1,1 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"common_asset_manager","Source":"../../modules/common_asset_manager","Dir":"../../modules/common_asset_manager"}]}
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"common_asset_manager","Source":"../../modules/common_asset_manager","Dir":"../../modules/common_asset_manager"},{"Key":"common_service_manager","Source":"../../modules/common_service_manager","Dir":"../../modules/common_service_manager"}]}

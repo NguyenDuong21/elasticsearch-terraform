@@ -26,7 +26,7 @@ variable "ssh_user" {
   default     = "atlantis"
 }
 
-variable "ssh_key" {
+variable "ssh_private_key" {
   description = "SSH private key in Atlantis Pod"
   type        = string
   default     = "/home/atlantis/.ssh/ssh-key.pem"
