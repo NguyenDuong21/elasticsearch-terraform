@@ -35,7 +35,7 @@ locals {
       status  = ["hostname; systemctl status (SERVICE) --no-pager || true"]
       start   = ["hostname; systemctl start (SERVICE)"]
       restart = ["hostname; systemctl restart (SERVICE)"]
-      enable  = ["hostname; systemctl enable --now (SERVICE)"]
+      enable  = ["hostname; sudo systemctl enable --now (SERVICE)"]
       stop    = ["hostname; systemctl stop (SERVICE)"]
       re-cycle = [
         "hostname",
