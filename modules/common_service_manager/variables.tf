@@ -23,11 +23,11 @@ variable "trigger_atlantis" {
 variable "ssh_user" {
   description = "OS user that have sudo permission"
   type        = string
-  default     = "atlantis"
+  default     = "vhv_admin"
 }
 
 variable "ssh_private_key" {
   description = "SSH private key in Atlantis Pod"
   type        = string
-  default     = "/home/atlantis/.ssh/ssh-key.pem"
+  default     = "/home/vhv_admin/.ssh/id_ed25519"
 }
