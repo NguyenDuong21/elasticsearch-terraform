@@ -12,15 +12,15 @@ Type=simple
 NotifyAccess=all
 RuntimeDirectory=elasticsearch
 PrivateTmp=true
-Environment=ES_HOME=/home/admin/elasticsearch
-Environment=ES_PATH=/home/admin/elasticsearch
+Environment=ES_HOME=/home/vhv_admin/elasticsearch
+Environment=ES_PATH=/home/vhv_admin/elasticsearch
 Environment=PID_DIR=/var/run/elasticsearch
-WorkingDirectory=/home/admin/elasticsearch
+WorkingDirectory=/home/vhv_admin/elasticsearch
 
-User=admin
-Group=admin
+User=vhv_admin
+Group=vhv_admin
 
-ExecStart=/home/admin/elasticsearch/bin/systemd-entrypoint -p ${PID_DIR}/elasticsearch.pid --quiet
+ExecStart=/home/vhv_admin/elasticsearch/bin/systemd-entrypoint -p ${PID_DIR}/elasticsearch.pid --quiet
 
 # StandardOutput is configured to redirect to journalctl since
 # some error messages may be logged in standard output before
@@ -60,6 +60,8 @@ SuccessExitStatus=143
 
 # Allow a slow startup before the systemd notifier module kicks in to extend the timeout
 TimeoutStartSec=900
+
+LimitMEMLOCK=infinity
 
 [Install]
 WantedBy=multi-user.target

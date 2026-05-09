@@ -6,18 +6,18 @@ environments:
         ssh_port: 22
         service: "elasticsearch"
         command_type: "systemctl"
-        command_action: "status"
+        command_action: "enable"
       
       - hostname: "blockchain-node2"
         ip: "10.60.3.35"
         ssh_port: 22
         service: "elasticsearch"
         command_type: "systemctl"
-        command_action: "status"
+        command_action: "enable"
 
       - hostname: "blockchain-node3"
         ip: "10.60.155.211"
         ssh_port: 22
         service: "elasticsearch"
         command_type: "systemctl"
-        command_action: "status"
+        command_action: "enable"
