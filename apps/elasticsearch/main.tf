@@ -16,6 +16,6 @@ module "elasticsearch_installation" {
   environment_id         = var.environment_id
   service_inventory_file = local.inventory
   service_inventory      = module.elasticsearch_installation.service_inventory
-  trigger_atlantis = "20260514T191000Z"
+  trigger_atlantis = "20260514T192000Z"
   es_install_dir  = "/home/vhv_admin"
 }
