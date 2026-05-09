@@ -12,5 +12,5 @@ cluster.initial_master_nodes: ["alice", "bob", "carol"]
 xpack.security.transport.ssl.enabled: true
 xpack.security.transport.ssl.verification_mode: certificate
 xpack.security.transport.ssl.client_authentication: required
-xpack.security.transport.ssl.keystore.path: /home/admin/elasticsearch/config/cert/elastic-certificates.p12
-xpack.security.transport.ssl.truststore.path: /home/admin/elasticsearch/config/cert/elastic-certificates.p12
+xpack.security.transport.ssl.keystore.path: /home/vhv_admin/elasticsearch/config/cert/elastic-certificates.p12
+xpack.security.transport.ssl.truststore.path: /home/vhv_admin/elasticsearch/config/cert/elastic-certificates.p12

@@ -10,19 +10,6 @@ locals {
   inventory = yamldecode(file("${path.module}/inventory.yaml"))
 }
 
-# module "common_service_manager" {
-#   source = "../../modules/common_service_manager"
-
-#   environment_id         = var.environment_id
-#   service_inventory_file = local.inventory
-
-
-#   service_inventory = module.common_service_manager.service_inventory
-#   trigger_atlantis = "20260506-01"
-#   ssh_user        = "admin"
-#   ssh_private_key = "/home/admin/.ssh/id_ed25519"
-# }
-
 module "common_asset_manager" {
   source = "../../modules/common_asset_manager"
 
@@ -33,8 +20,18 @@ module "common_asset_manager" {
   service_inventory = module.common_asset_manager.service_inventory
 
   git_asset_dir = "assets"
-  vm_asset_dir  = "/home/admin/elasticsearch"
+  vm_asset_dir  = "/home/vhv_admin/elasticsearch"
 
-  ssh_user        = "admin"
-  ssh_private_key = "/home/admin/.ssh/id_ed25519"
+  ssh_user        = "vhv_admin"
+  ssh_private_key = "/home/vhv_admin/.ssh/id_ed25519"
 }
+
+/*module "elasticsearch_installation" {
+  source = "../../modules/elasticsearch_installation"
+
+  environment_id         = var.environment_id
+  service_inventory_file = local.inventory
+  service_inventory      = module.elasticsearch_installation.service_inventory
+  trigger_atlantis = "20260514T191000Z"
+  vm_asset_dir  = "/home/vhv_admin/elasticsearch"
+}*/

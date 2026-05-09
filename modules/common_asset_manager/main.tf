@@ -83,54 +83,54 @@ locals {
 # Deploy file to VM
 ############################################################
 
-# resource "terraform_data" "asset_manager" {
-#   for_each = local.asset_file_manager
+resource "terraform_data" "asset_manager" {
+  for_each = local.asset_file_manager
 
-#   triggers_replace = [
-#     sha256(each.value.content)
-#   ]
+  triggers_replace = [
+    sha256(each.value.content)
+  ]
 
-#   connection {
-#     type        = "ssh"
-#     user        = var.ssh_user
-#     private_key = file(var.ssh_private_key)
-#     host        = each.value.ip
-#     port        = each.value.ssh_port
-#     timeout     = var.ssh_timeout
-#   }
+  connection {
+    type        = "ssh"
+    user        = var.ssh_user
+    private_key = file(var.ssh_private_key)
+    host        = each.value.ip
+    port        = each.value.ssh_port
+    timeout     = var.ssh_timeout
+  }
 
-#   ##########################################################
-#   # Create directory on target
-#   ##########################################################
+  ##########################################################
+  # Create directory on target
+  ##########################################################
 
-#   provisioner "remote-exec" {
-#     inline = [
-#       "mkdir -p $(dirname ${each.value.vm_asset_path_tmp})"
-#     ]
-#   }
+  provisioner "remote-exec" {
+    inline = [
+      "mkdir -p $(dirname ${each.value.vm_asset_path_tmp})"
+    ]
+  }
 
-#   ##########################################################
-#   # Upload file to temporary location
-#   ##########################################################
+  ##########################################################
+  # Upload file to temporary location
+  ##########################################################
 
-#   provisioner "file" {
-#     content     = each.value.content
-#     destination = each.value.vm_asset_path_tmp
-#   }
+  provisioner "file" {
+    content     = each.value.content
+    destination = each.value.vm_asset_path_tmp
+  }
 
-#   ##########################################################
-#   # Move to final location with permission control
-#   ##########################################################
+  ##########################################################
+  # Move to final location with permission control
+  ##########################################################
 
-#   provisioner "remote-exec" {
-#     inline = [
-#       "sudo mkdir -p $(dirname ${each.value.vm_asset_path})",
-#       "sudo cp -f ${each.value.vm_asset_path_tmp} ${each.value.vm_asset_path}",
-#       "sudo chmod 660 ${each.value.vm_asset_path}",
-#       # "sudo chown root:root ${each.value.vm_asset_path}"
-#     ]
-#   }
-# }
+  provisioner "remote-exec" {
+    inline = [
+      "sudo mkdir -p $(dirname ${each.value.vm_asset_path})",
+      "sudo cp -f ${each.value.vm_asset_path_tmp} ${each.value.vm_asset_path}",
+      "sudo chmod 660 ${each.value.vm_asset_path}",
+      # "sudo chown root:root ${each.value.vm_asset_path}"
+    ]
+  }
+}
 
 ############################################################
 # Output deployed inventory
