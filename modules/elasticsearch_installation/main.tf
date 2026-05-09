@@ -75,7 +75,7 @@ resource "terraform_data" "es_prepare" {
 }
 
 module "common_asset_manager" {
-  source = "../modules/common_asset_manager"
+  source = "../common_asset_manager"
 
   environment_id         = var.environment_id
   service_inventory_file = var.service_inventory_file
