@@ -1,4 +1,4 @@
 
-output "elasticsearch_installation" {
-  value = module.common_asset_manager.service_inventory
+output "service_inventory" {
+  value = module.elasticsearch_installation.service_inventory
 }
