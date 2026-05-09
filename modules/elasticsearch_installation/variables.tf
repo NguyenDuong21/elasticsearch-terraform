@@ -15,8 +15,8 @@ variable "service_inventory" {
   }))
 }
 
-variable "vm_asset_dir" {
-  description = "Base directory on VM to store configuration files"
+variable "es_install_dir" {
+  description = "Elasticsearch installation directory on the remote VM"
   type        = string
 }
 
@@ -31,9 +31,21 @@ variable "ssh_user" {
 }
 
 variable "process_user" {
-  description = "OS user that have sudo permission"
+  description = "process user that will run elasticsearch service"
   type        = string
   default     = "vhv_admin"
+}
+
+variable "elasticsearch_package" {
+  description = "Name of the Elasticsearch package"
+  type        = string
+  default     = "elasticsearch-8.17.3-linux-x86_64.tar.gz"
+}
+
+variable "elasticsearch_version" {
+  description = "Version of the Elasticsearch package"
+  type        = string
+  default     = "8.17.3"
 }
 
 variable "ssh_key" {
