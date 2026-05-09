@@ -20,7 +20,7 @@ WorkingDirectory=/home/vhv_admin/elasticsearch
 User=vhv_admin
 Group=vhv_admin
 
-ExecStart=/home/vhv_admin/elasticsearch/bin/systemd-entrypoint -p ${PID_DIR}/elasticsearch.pid --quiet
+ExecStart=/home/vhv_admin/elasticsearch/bin/elasticsearch -p ${PID_DIR}/elasticsearch.pid --quiet
 
 # StandardOutput is configured to redirect to journalctl since
 # some error messages may be logged in standard output before
