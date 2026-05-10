@@ -1,7 +1,7 @@
 node.name: ${vm_host}
 node.roles: [master,data,ingest]
 
-cluster.name: my-cluster
+cluster.name: elasticsearch-cluster
 path.data: /data/es
 path.logs: /data/logs/es
 path.repo: /data/backup-elk
